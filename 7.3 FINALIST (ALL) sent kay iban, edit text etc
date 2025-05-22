@@ -692,7 +692,7 @@ server <- function(input, output, session) {
     req(input$customer_name, input$mobile, input$totalamount)
     mobile_digits <- gsub("[^0-9]", "", input$mobile)
     if (nchar(mobile_digits) != 11) {
-      showNotification("❌ Invalid mobile number!", type = "error", duration = 5
+      showNotification("❌ Invalid mobile number!", type = "error", duration =  5)
       return()
     }
     profit <- if(input$type == "Load") {
@@ -745,8 +745,8 @@ server <- function(input, output, session) {
     updateTextInput(session, "customer_name", value = "")
     updateTextInput(session, "mobile", value = "")
     updateNumericInput(session, "totalamount", value = 0)
-    showNotification("✅ Transaction Saved!", type = "message", duration = 5
-  })
+    showNotification("✅ Transaction Saved!", type = "message", duration = 5)  
+    })
   
   observeEvent(input$deleterow, {
     req(input$data_table_rows_selected)
@@ -1422,5 +1422,7 @@ server <- function(input, output, session) {
   )
 }
 shinyApp(ui=ui, server=server)
+
+
 
 
