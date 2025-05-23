@@ -1239,7 +1239,7 @@ server <- function(input, output, session) {
     if (nrow(sales_data) == 0) return(NULL)
     summary_df <- sales_data %>% group_by(Category) %>% summarize(
       `Items Count`=n(), `Total Revenue`=sum(Revenue), `Total Profit`=sum(Profit),
-      `Profit Margin (%)`=round(sum(Profit)/sum(Revenue)*100,1), .groups='drop'
+      `Profit Margin (%)`=round(sum(Profit)/sum(Revenue),3), .groups='drop'
     ) %>% arrange(desc(`Total Profit`))
     datatable(summary_df, options=list(pageLength=5, dom='tip', ordering=TRUE), rownames=FALSE) %>%
       formatCurrency(c("Total Revenue","Total Profit"), currency="₱", digits=2) %>%
